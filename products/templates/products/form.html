@@ -10,22 +10,30 @@
 </head>
 <body>
 <div class="container">
-    <h1 > iphone models from static data : </h1>
+    <h1 > iphone models from database :</h1>
      <table class="table">
             <tr>
                 <td>ID</td>
                 <td>name</td>
-                <td>IMage</td>
+                <td>Image</td>
+                <td>show</td>
+                <td>edit</td>
+                <td>delete</td>
             </tr>
             {% for p in products %}
          <tr>
                 <td>{{p.id}}</td>
                 <td>{{p.name}}</td>
                 <td><img src="{%static 'products/Images/'|add:p.image' %}" height="100" width="100"></td>
+             <td><a href="/products/{{p.id}}" class="btn btn-info">show</a></td>
+             <td><a href="{{p.get_edit_url}}" class="btn btn-warning">edit</a></td>
+             <td><a href="{{p.delete_all_url}}" class="btn btn-danger">delete</a></td>
 
             </tr>
             {% endfor %}
      </table>
+    <td><a href="/products/create" class="btn btn-success">create</a></td>
+
 
 </div>
 
